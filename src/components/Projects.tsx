@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Folder, Layers, Smartphone, Ghost } from "lucide-react";
+import { ExternalLink, Github, Folder, Layers } from "lucide-react";
 
 const projects = [
   {
@@ -13,7 +13,8 @@ const projects = [
     tech: ["React", "Next.js", "Tailwind", "Firebase"],
     github: "https://github.com/",
     demo: "#",
-    color: "blue"
+    color: "linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(29, 78, 216, 0.2) 100%)",
+    icon: "🎓"
   },
   {
     id: 2,
@@ -23,7 +24,8 @@ const projects = [
     tech: ["React", "Firebase", "Stripe", "Tailwind"],
     github: "https://github.com/",
     demo: "#",
-    color: "emerald"
+    color: "linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(4, 120, 87, 0.2) 100%)",
+    icon: "📷"
   },
   {
     id: 3,
@@ -33,7 +35,8 @@ const projects = [
     tech: ["Spring Boot", "MySQL", "React", "Docker"],
     github: "https://github.com/",
     demo: "#",
-    color: "indigo"
+    color: "linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(67, 56, 202, 0.2) 100%)",
+    icon: "📋"
   },
   {
     id: 4,
@@ -43,7 +46,8 @@ const projects = [
     tech: ["React Native", "TypeScript", "Expo"],
     github: "https://github.com/",
     demo: "#",
-    color: "purple"
+    color: "linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(109, 40, 217, 0.2) 100%)",
+    icon: "📱"
   },
   {
     id: 5,
@@ -53,7 +57,8 @@ const projects = [
     tech: ["React Native", "Expo", "Reanimated"],
     github: "https://github.com/",
     demo: "#",
-    color: "pink"
+    color: "linear-gradient(135deg, rgba(236, 72, 153, 0.2) 0%, rgba(190, 24, 74, 0.2) 100%)",
+    icon: "🧪"
   },
   {
     id: 6,
@@ -63,7 +68,8 @@ const projects = [
     tech: ["PHP", "MySQL", "Bootstrap"],
     github: "https://github.com/",
     demo: "#",
-    color: "orange"
+    color: "linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(194, 65, 12, 0.2) 100%)",
+    icon: "📚"
   },
   {
     id: 7,
@@ -73,18 +79,67 @@ const projects = [
     tech: ["Node.js", "Express", "MongoDB"],
     github: "https://github.com/",
     demo: "#",
-    color: "cyan"
+    color: "linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(9, 79, 114, 0.2) 100%)",
+    icon: "📖"
   }
 ];
 
-const categories = ["All", "Web", "Mobile", "Full Stack", "Backend"];
-
 export default function Projects() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = React.useState("All");
+  const [projectsList, setProjectsList] = React.useState(projects);
+  const [isMounted, setIsMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMounted(true);
+    const localData = localStorage.getItem("dl_portfolio");
+    if (localData) {
+      try {
+        const parsed = JSON.parse(localData);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const mapped = parsed.map((p: any, idx: number) => {
+            const tech = p.tags
+              ? p.tags.split(",").map((t: string) => t.trim()).filter(Boolean)
+              : [];
+            
+            let cat = p.category || "Web";
+            // Normalize categories to capitalize them
+            cat = cat.charAt(0).toUpperCase() + cat.slice(1);
+            if (cat === "Fullstack" || cat === "Full stack") cat = "Full Stack";
+            
+            return {
+              id: p.id || `local-${idx}`,
+              title: p.title,
+              category: cat,
+              desc: p.description || "",
+              tech: tech,
+              github: p.github || "#",
+              demo: p.url || "#",
+              color: p.bannerColor || "linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%)",
+              icon: p.icon || "💼"
+            };
+          });
+          setProjectsList(mapped);
+        }
+      } catch (err) {
+        console.error("Error reading projects from local storage:", err);
+      }
+    }
+  }, []);
+
+  const categories = React.useMemo(() => {
+    const list = ["All", "Web", "Mobile", "Full Stack", "Backend"];
+    projectsList.forEach(p => {
+      if (!list.includes(p.category)) {
+        list.push(p.category);
+      }
+    });
+    return list;
+  }, [projectsList]);
 
   const filteredProjects = activeCategory === "All" 
-    ? projects 
-    : projects.filter(p => p.category === activeCategory || (activeCategory === "Full Stack" && (p.category === "Full Stack" || p.category === "E-commerce")));
+    ? projectsList 
+    : projectsList.filter(p => p.category === activeCategory || (activeCategory === "Full Stack" && (p.category === "Full Stack" || p.category === "E-commerce")));
+
 
   return (
     <section id="projects" className="relative">
@@ -130,15 +185,28 @@ export default function Projects() {
               className="glass-card flex flex-col group h-full cursor-pointer overflow-hidden border-white/5"
             >
               {/* Project Image Placeholder / Decorative */}
-              <div className="h-48 -mx-6 -mt-6 mb-6 bg-slate-800/50 flex items-center justify-center relative overflow-hidden">
-                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-emerald-500/10" />
-                 <Folder className={`w-12 h-12 text-slate-700 group-hover:text-indigo-500/50 transition-colors duration-500 group-hover:scale-110`} />
+              <div 
+                className="h-48 -mx-6 -mt-6 mb-6 flex items-center justify-center relative overflow-hidden transition-all duration-500 bg-slate-900/60 border-b border-white/5"
+                style={{
+                  background: project.color && (project.color.includes('linear-gradient') || project.color.includes('rgba') || project.color.startsWith('#'))
+                    ? project.color
+                    : 'linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%)'
+                }}
+              >
+                 {(!project.color || !project.color.includes('linear-gradient')) && (
+                   <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-emerald-500/10" />
+                 )}
+                 {project.icon ? (
+                   <span className="text-5xl select-none filter drop-shadow-[0_4px_12px_rgba(255,255,255,0.15)] group-hover:scale-110 transition-transform duration-500">{project.icon}</span>
+                 ) : (
+                   <Folder className="w-12 h-12 text-slate-700 group-hover:text-indigo-500/50 transition-colors duration-500 group-hover:scale-110" />
+                 )}
                  
                  <div className="absolute top-4 right-4 flex gap-2">
-                   <a href={project.github} target="_blank" className="p-2 glass rounded-full hover:bg-slate-700 transition-colors">
+                   <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-2 glass rounded-full hover:bg-slate-700 transition-colors">
                      <Github className="w-4 h-4 text-white" />
                    </a>
-                   <a href={project.demo} target="_blank" className="p-2 glass rounded-full hover:bg-slate-700 transition-colors">
+                   <a href={project.demo} target="_blank" rel="noopener noreferrer" className="p-2 glass rounded-full hover:bg-slate-700 transition-colors">
                      <ExternalLink className="w-4 h-4 text-white" />
                    </a>
                  </div>

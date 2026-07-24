@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Cpu, Layout, Server, Database, Wrench, Smartphone, Code2 } from "lucide-react";
+import { Layout, Server, Database, Wrench, Code2 } from "lucide-react";
 
 const skillGroups = [
   {

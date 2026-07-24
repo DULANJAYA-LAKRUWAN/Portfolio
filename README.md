@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DulanJaya Lakruwan — Portfolio
+
+Personal portfolio website built with Next.js 16, React 19, and Tailwind CSS v4.
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router, Turbopack)
+- **UI:** React 19, Tailwind CSS v4, Framer Motion
+- **Language:** TypeScript
+- **Icons:** Lucide React
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
+yarn install
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout (fonts, metadata)
+│   ├── page.tsx            # Home page (all sections)
+│   ├── globals.css         # Tailwind v4 + custom theme
+│   └── admin/
+│       ├── layout.tsx      # Admin metadata
+│       └── page.tsx        # Admin panel (embeds /admin/index.html)
+├── components/
+│   ├── Navbar.tsx          # Fixed top nav
+│   ├── Hero.tsx            # Hero section
+│   ├── About.tsx           # About section
+│   ├── Skills.tsx          # Tech stack grid
+│   ├── Projects.tsx        # Portfolio projects (hardcoded + localStorage)
+│   ├── Experience.tsx      # Work experience & education
+│   ├── Contact.tsx         # Contact form & info
+│   └── Footer.tsx          # Footer with admin link
+└── lib/
+    └── utils.ts            # cn() helper (clsx + tailwind-merge)
 
-## Learn More
+public/
+└── admin/                  # Standalone admin panel (vanilla HTML/JS/CSS)
+    ├── index.html
+    ├── app.js
+    └── styles.css
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Admin Panel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Access at `/admin` — a full CRUD dashboard for managing projects, clients, portfolio items, and work tasks. All data persists in localStorage. Portfolio items added in the admin panel automatically appear in the public Projects section.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Private — DulanJaya Lakruwan

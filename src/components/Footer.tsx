@@ -43,6 +43,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono tracking-widest text-slate-600 uppercase">
           <p>© {new Date().getFullYear()} DulanJaya Lakruwan. All rights reserved.</p>
           <div className="flex gap-6">
+            <Link href="/admin/" className="hover:text-primary font-bold">🖥️ Admin Panel</Link>
             <Link href="#" className="hover:text-primary">Privacy Policy</Link>
             <Link href="#" className="hover:text-primary">Terms of Service</Link>
           </div>
