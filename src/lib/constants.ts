@@ -1,10 +1,11 @@
 export const PROFILE = {
   name: "Dulanjaya Lakruwan",
   handle: "@dulanjaya",
+  avatar: "/images/dulanjaya.jpg",
   title: "Senior Staff Software Engineer & AI System Architect",
   tagline: "Building high-throughput distributed systems, AI-powered applications, and hyper-polished digital products.",
   location: "Sri Lanka / Remote Worldwide",
-  email: "contact@dulanjaya.dev",
+  email: "devlakruwan@gmail.com",
   github: "https://github.com/DULANJAYA-LAKRUWAN",
   linkedin: "https://linkedin.com/in/dulanjaya-lakruwan",
   twitter: "https://x.com/dulanjayadev",
@@ -18,11 +19,11 @@ export const PROFILE = {
     { label: "System Uptime", value: "99.99%" },
   ],
   roles: [
-    "Senior Software Engineer",
+    "Full-Stack Software Engineer",
     "AI Systems Architect",
-    "Full-Stack Developer",
-    "Product Strategist",
-    "DevOps Specialist"
+    "SaaS Platform Builder",
+    "Cloud & DevOps Engineer",
+    "Technical Consultant"
   ]
 };
 
@@ -99,88 +100,130 @@ export interface ProjectItem {
 
 export const FEATURED_PROJECTS: ProjectItem[] = [
   {
-    slug: "starchance-platform",
-    title: "StarChance Platform",
-    tagline: "High-throughput raffle & gaming platform handling 15,000+ req/sec",
-    description: "Enterprise-grade digital raffle and ticket distribution ecosystem featuring instant cryptographic ticket verification, sub-second settlement, and real-time live draw streaming.",
-    category: "Distributed Systems",
+    slug: "juicevibe-lk",
+    title: "JuiceVibe.lk - Juice Bar & Operations Platform",
+    tagline: "Complete customer web app, authenticated admin portal, and backend order engine",
+    description: "A production-grade digital ordering and kitchen management ecosystem built for a premier Sri Lankan juice brand. Features real-time menu management, WhatsApp order triggers, custom add-ons, and live sales analytics.",
+    category: "Web Applications",
     featured: true,
-    bannerImage: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop",
-    technologies: ["Next.js 15", "Node.js", "Redis Pub/Sub", "PostgreSQL", "Tailwind CSS", "WebSockets"],
-    githubUrl: "https://github.com/DULANJAYA-LAKRUWAN/StarChance",
-    liveUrl: "https://starchance.demo",
+    bannerImage: "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?q=80&w=1200&auto=format&fit=crop",
+    technologies: ["Next.js", "TypeScript", "Node.js", "Tailwind CSS", "WhatsApp API", "Vercel"],
+    githubUrl: "https://github.com/DULANJAYA-LAKRUWAN/JuiceVibe",
+    liveUrl: "https://juicevibe.lk/",
     metrics: {
-      "Peak Throughput": "15,000 req/sec",
-      "Settlement Latency": "< 45ms",
-      "System Uptime": "99.99%"
+      "Status": "Live Production",
+      "Order Dispatch": "< 2s Realtime",
+      "Mobile Performance": "100 / 100"
     },
-    architectureSummary: "Built on a microservices mesh utilizing Redis Pub/Sub for instantaneous ticket allocation queues and PostgreSQL row-level locks for transaction isolation.",
-    challenges: "Handling sudden flash-traffic surges during nationwide live draws without database lock contention.",
-    solution: "Designed an in-memory Redis token-bucket buffer that batches write operations into PostgreSQL asynchronously every 500ms.",
-    lessonsLearned: "Distributed locks and optimistic concurrency control are mandatory when scaling transactional financial engines."
+    architectureSummary: "Built with a responsive mobile-first customer storefront integrated with an authenticated admin kitchen dispatch console. Uses real-time order state streams and WhatsApp notification webhooks.",
+    challenges: "Providing seamless mobile checkout with custom recipe modifications and instant kitchen slip dispatch during high-rush hours.",
+    solution: "Constructed a streamlined one-page cart with local persistence, automated WhatsApp invoice generation, and real-time order status tracking.",
+    lessonsLearned: "Direct messaging integration (WhatsApp) delivers 3x higher customer repeat rates in Sri Lankan food & beverage businesses."
   },
   {
-    slug: "ceyos-kernel",
-    title: "CeyOS Systems Engine",
-    tagline: "Custom lightweight operating system & developer core utilities",
-    description: "A custom lightweight system environment designed for extreme performance, minimal memory footprints, and specialized developer automation tools.",
-    category: "Operating Systems",
+    slug: "salon-sidra-luxury",
+    title: "Salon Sidra - Luxury Beauty & Booking Platform",
+    tagline: "High-converting luxury salon platform with appointment scheduling & service catalog",
+    description: "A luxury beauty & wellness web platform featuring an opulent modern aesthetic, interactive service pricing tiers, stylist appointment reservations, and client consultation workflows.",
+    category: "Web Applications",
     featured: true,
-    bannerImage: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?q=80&w=1200&auto=format&fit=crop",
-    technologies: ["C/C++", "System Architecture", "Assembly", "Shell Scripting", "Makefile"],
-    githubUrl: "https://github.com/DULANJAYA-LAKRUWAN/CeyOS",
-    liveUrl: "https://ceyos.dev",
+    bannerImage: "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop",
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"],
+    githubUrl: "https://github.com/DULANJAYA-LAKRUWAN/Salon-Sidra-Luxury",
+    liveUrl: "https://salon-sidra-luxury-v1.vercel.app/",
     metrics: {
-      "RAM Footprint": "< 128 MB",
-      "Boot Time": "1.2 seconds",
-      "Binary Size": "4.5 MB"
+      "Design Tier": "Luxury Aesthetic",
+      "Booking Conversion": "+55% Boost",
+      "Lighthouse Score": "99 / 100"
     },
-    architectureSummary: "Modular kernel architecture featuring memory-mapped I/O registers, a custom task scheduler, and lightweight IPC channels.",
-    challenges: "Achieving ultra-low latency hardware resource allocation while maintaining crash resilience.",
-    solution: "Implemented isolated memory rings and non-blocking ring-buffers for peripheral hardware interrupts.",
-    lessonsLearned: "Direct memory management grants unmatched performance but requires ruthless pointer safety checks."
+    architectureSummary: "Engineered with modern Next.js and Framer Motion for liquid-smooth micro-interactions. Features a customized dynamic appointment scheduling funnel and responsive service catalog.",
+    challenges: "Crafting a luxury brand experience with heavy media assets without sacrificing mobile load speed.",
+    solution: "Implemented Next.js Image optimization with responsive WebP transformations and CSS hardware-accelerated animations.",
+    lessonsLearned: "High-ticket service businesses require visual elegance, clear pricing transparency, and instant friction-free booking."
   },
   {
-    slug: "antigravity-ai-rag",
-    title: "Antigravity AI Agent Hub",
-    tagline: "Autonomous multi-agent RAG knowledge engine with streaming response pipelines",
-    description: "An AI-powered knowledge synthesis platform capable of ingesting heterogeneous codebases, indexing vector embeddings, and streaming real-time contextual answers.",
+    slug: "bizcrm-pro",
+    title: "BizCRM Pro - Lead Engine & Instant Site Generator",
+    tagline: "SaaS platform discovering local leads and auto-generating high-converting demo websites",
+    description: "An automated agency sales engine that scrapes local businesses lacking web presence, manages pipeline stages, and dynamically synthesizes personalized single-page client websites in seconds.",
+    category: "Web Applications",
+    featured: true,
+    bannerImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
+    technologies: ["Next.js 14", "TypeScript", "MongoDB Atlas", "Tailwind CSS", "Vercel"],
+    githubUrl: "https://github.com/DULANJAYA-LAKRUWAN/BizCRM-Pro",
+    liveUrl: "https://bizcrm.demo",
+    metrics: {
+      "Lead Discovery": "1,000+ per batch",
+      "Site Gen Latency": "< 1.5s",
+      "Client Conversion": "+42% Rate"
+    },
+    architectureSummary: "Built with Next.js App Router and server actions communicating with MongoDB Atlas. Features a dynamic JSON schema page generator that transforms raw company profiles into responsive landing pages.",
+    challenges: "Generating diverse, aesthetically unique landing page templates on the fly without heavy server-side overhead.",
+    solution: "Implemented a modular React component registry with dynamic theme token injection and pre-compiled layout blocks.",
+    lessonsLearned: "Automating the demo preview dramatically lowers customer acquisition cost (CAC) in agency sales."
+  },
+  {
+    slug: "wedding-invitation-builder",
+    title: "Wedding & Event Digital Invitation System",
+    tagline: "Interactive digital invitation builder with live RSVP, wish wall, and audio playback",
+    description: "A full-scale event SaaS platform featuring animated envelope covers, dynamic themes (Luxe Garden, Vintage Retro, Modern Minimalist), real-time guest RSVP tracking, and WhatsApp sharing.",
+    category: "Web Applications",
+    featured: true,
+    bannerImage: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop",
+    technologies: ["Next.js 16", "React 19", "TypeScript", "Mongoose", "Tailwind CSS", "Framer Motion"],
+    githubUrl: "https://github.com/DULANJAYA-LAKRUWAN/Wedding-Invitation-Builder",
+    liveUrl: "https://invites.demo",
+    metrics: {
+      "Active Templates": "6 Luxury Themes",
+      "RSVP Sync Time": "< 50ms",
+      "Lighthouse Score": "99 / 100"
+    },
+    architectureSummary: "Engineered on Next.js 16 and React 19 Server Components. Uses MongoDB for event state management with dedicated dynamic slug endpoints `/e/[slug]` and authenticated admin dashboards.",
+    challenges: "Ensuring ultra-smooth mobile opening animations and cross-browser audio background streaming on iOS/Android.",
+    solution: "Designed touch-activated user gesture audio triggers and hardware-accelerated CSS envelope transitions.",
+    lessonsLearned: "Mobile-first emotional UX creates massive viral sharing loops through WhatsApp and social messaging."
+  },
+  {
+    slug: "futureleaks-studio",
+    title: "FutureLeaks Studio - AI Content OS",
+    tagline: "Multi-LLM content orchestration platform automating multi-network social distribution",
+    description: "An enterprise AI operating system transforming raw trends and ideas into high-retention video scripts, multi-platform captions, and automated publishing workflows across 6 major networks.",
     category: "AI & ML",
     featured: true,
     bannerImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop",
-    technologies: ["React 19", "Python FastAPI", "OpenAI API", "PgVector", "LangChain", "Framer Motion"],
-    githubUrl: "https://github.com/DULANJAYA-LAKRUWAN/antigravity-ai-hub",
-    liveUrl: "https://ai.dulanjaya.dev",
+    technologies: ["Turborepo", "Next.js", "OpenAI / Gemini", "Prisma", "PostgreSQL", "BullMQ"],
+    githubUrl: "https://github.com/DULANJAYA-LAKRUWAN/FutureLeaks-Studio",
+    liveUrl: "https://futureleaks.ai",
     metrics: {
-      "RAG Latency": "320ms",
-      "Precision Score": "98.4%",
-      "Indexed Documents": "50,000+"
+      "Multi-Network": "6 Platforms",
+      "Token Cost Reduction": "40%",
+      "Architecture Docs": "38 Specs"
     },
-    architectureSummary: "Hybrid semantic search pipeline combining OpenAI text-embedding-3-small vector similarity with BM25 keyword matching for maximum recall.",
-    challenges: "Mitigating LLM hallucination and context window overflow during multi-turn technical conversations.",
-    solution: "Constructed dynamic context chunking with sliding window memory and strict system boundary prompts.",
-    lessonsLearned: "RAG performance depends 80% on clean chunking/embedding quality and 20% on prompt tuning."
+    architectureSummary: "Turborepo monorepo with modular micro-packages. Features dynamic model routing, embedding caching, and asynchronous social distribution queues using Redis and BullMQ.",
+    challenges: "Handling rate limits, varying character restrictions, and media format constraints across 6 social APIs simultaneously.",
+    solution: "Created platform-specific schema adapters and an automated retry matrix with exponential backoff.",
+    lessonsLearned: "Centralized prompt engineering handbooks and shared types are vital for reliable multi-model output."
   },
   {
-    slug: "nexus-cloud-dashboard",
-    title: "Nexus Cloud Telemetry Portal",
-    tagline: "Real-time infrastructure monitoring dashboard with glassmorphic UI",
-    description: "A high-performance web dashboard providing DevOps teams with real-time server metrics, error trace aggregation, and automated incident response triggers.",
-    category: "Web Applications",
+    slug: "ceyskill-marketplace",
+    title: "CeySkill - Trusted Skilled Worker Platform",
+    tagline: "Hyper-local marketplace connecting households with verified technicians",
+    description: "A location-aware service platform for blue-collar trades in Sri Lanka with real-time job dispatch, verified identity audits, in-app chat, and rating analytics.",
+    category: "Distributed Systems",
     featured: true,
-    bannerImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
-    technologies: ["Next.js 15", "TypeScript", "Three.js", "Recharts", "Tailwind CSS", "Vercel Edge"],
-    githubUrl: "https://github.com/DULANJAYA-LAKRUWAN/nexus-cloud",
-    liveUrl: "https://nexus.dulanjaya.dev",
+    bannerImage: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop",
+    technologies: ["React Native (Expo)", "NestJS", "PostgreSQL + PostGIS", "Prisma", "WebSockets"],
+    githubUrl: "https://github.com/DULANJAYA-LAKRUWAN/CeySkill-Platform",
+    liveUrl: "https://ceyskill.lk",
     metrics: {
-      "UI Frame Rate": "60 FPS Constant",
-      "Data Refresh": "100ms WebSockets",
-      "Lighthouse Score": "100 / 100"
+      "Geo-Query Radius": "< 5km Spatial",
+      "Socket Latency": "< 30ms",
+      "Worker Verification": "100% KYC"
     },
-    architectureSummary: "Canvas-accelerated chart engine rendering over 10,000 data points per second with zero UI thread jank.",
-    challenges: "Preventing browser memory leaks during continuous 24/7 web socket telemetry streaming.",
-    solution: "Utilized circular ArrayBuffers and offscreen Canvas web workers for non-blocking rendering.",
-    lessonsLearned: "Offloading intensive canvas calculations to Web Workers is critical for smooth 60fps web apps."
+    architectureSummary: "PostGIS spatial geospatial indexing for real-time proximity matching, connected to NestJS microservices and WebSocket event gateways.",
+    challenges: "Delivering real-time worker location updates and dispatch notifications on constrained 3G/4G mobile connections.",
+    solution: "Used lightweight binary WebSocket payloads with geofence triggers to minimize mobile battery and data drain.",
+    lessonsLearned: "Designing for local emerging markets requires extreme data efficiency and offline-first mobile states."
   }
 ];
 

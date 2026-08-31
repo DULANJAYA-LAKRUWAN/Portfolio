@@ -58,7 +58,23 @@ export const ContactSection: React.FC = () => {
         {/* Left Column: Direct Channels */}
         <div className="lg:col-span-5 space-y-6">
           <GlassCard glow className="p-8">
-            <h3 className="text-xl font-bold text-white mb-6">Contact Information</h3>
+            {/* Founder Avatar Mini Header */}
+            <div className="flex items-center gap-4 mb-6 pb-6 border-b border-slate-800">
+              <div className="relative w-14 h-14 rounded-full p-[2px] bg-gradient-to-tr from-blue-500 via-indigo-500 to-cyan-400 shadow-lg shrink-0">
+                <img
+                  src={PROFILE.avatar}
+                  alt={PROFILE.name}
+                  className="w-full h-full object-cover rounded-full"
+                />
+                <span className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-[#050816]" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white leading-tight">{PROFILE.name}</h3>
+                <p className="text-xs text-cyan-400 font-mono mt-0.5">Open for Contracts & Tech Advisory</p>
+              </div>
+            </div>
+
+            <h4 className="text-sm font-mono text-slate-300 font-semibold mb-4 uppercase tracking-wider">// Direct Channels</h4>
 
             <div className="space-y-6 text-sm">
               <div className="flex items-start gap-4">

@@ -44,9 +44,13 @@ export const Navbar: React.FC<NavbarProps> = ({
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
         {/* Brand Logo */}
-        <a href="#" className="group flex items-center gap-2 text-lg font-bold tracking-tight">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 via-indigo-600 to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-blue-500/25 group-hover:scale-105 transition-transform">
-            D
+        <a href="#" className="group flex items-center gap-2.5 text-lg font-bold tracking-tight">
+          <div className="relative w-9 h-9 rounded-full p-[1.5px] bg-gradient-to-tr from-blue-500 via-indigo-500 to-cyan-400 shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform overflow-hidden">
+            <img
+              src={PROFILE.avatar}
+              alt={PROFILE.name}
+              className="w-full h-full object-cover rounded-full"
+            />
           </div>
           <span className="text-white font-mono font-bold tracking-wider">
             Dulanjaya<span className="text-blue-500">.dev</span>

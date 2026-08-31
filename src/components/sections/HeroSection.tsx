@@ -48,17 +48,46 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTerminal }) => {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-blue-600/20 via-indigo-600/10 to-transparent blur-[140px] pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center px-4">
-        {/* Availability Badge */}
+        {/* Profile Avatar Showcase */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-blue-950/40 border border-blue-500/30 text-blue-300 text-xs font-mono backdrop-blur-md shadow-lg shadow-blue-500/10"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="relative inline-block mb-6 group"
         >
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span>Available for High-Impact Roles & Advisory</span>
-          <ShieldCheck className="w-3.5 h-3.5 text-blue-400 ml-1" />
+          {/* Ambient Glow behind avatar */}
+          <div className="absolute -inset-1.5 bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-400 rounded-full blur-md opacity-75 group-hover:opacity-100 transition duration-500 group-hover:scale-105 animate-pulse" />
+          
+          {/* Avatar Container */}
+          <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full p-[3px] bg-gradient-to-tr from-blue-500 via-indigo-500 to-cyan-400 shadow-2xl">
+            <img
+              src={PROFILE.avatar}
+              alt={PROFILE.name}
+              className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+
+          {/* Active Online / Available Status Indicator */}
+          <div className="absolute bottom-1 right-1 p-1 bg-[#050816] rounded-full border-2 border-[#050816] shadow-lg">
+            <div className="w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center">
+              <span className="w-2 h-2 rounded-full bg-emerald-200 animate-ping" />
+            </div>
+          </div>
         </motion.div>
+
+        {/* Availability Badge */}
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-blue-950/40 border border-blue-500/30 text-blue-300 text-xs font-mono backdrop-blur-md shadow-lg shadow-blue-500/10"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Available for High-Impact Roles & Advisory</span>
+            <ShieldCheck className="w-3.5 h-3.5 text-blue-400 ml-1" />
+          </motion.div>
+        </div>
 
         {/* Name Title */}
         <motion.h1
