@@ -2,13 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, FileText, ArrowRight, Github, Linkedin, MessageSquare, Terminal, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Sparkles, FileText, ArrowRight, Terminal, ShieldCheck } from 'lucide-react';
 import { PROFILE } from '@/lib/constants';
 import { HeroCanvas } from '@/components/3d/HeroCanvas';
-import { Badge } from '@/components/ui/Badge';
 
 interface HeroSectionProps {
-  onOpenTerminal: () => void;
+  onOpenTerminal?: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTerminal }) => {
@@ -152,6 +151,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenTerminal }) => {
             <FileText className="w-4 h-4 text-slate-400" />
             <span>Resume PDF</span>
           </a>
+
+          {onOpenTerminal && (
+            <button
+              onClick={onOpenTerminal}
+              className="px-5 py-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 text-emerald-400 hover:text-white font-medium text-sm flex items-center gap-2 hover:bg-slate-800 transition-all cursor-pointer"
+            >
+              <Terminal className="w-4 h-4 text-emerald-400" />
+              <span>Terminal CLI</span>
+            </button>
+          )}
         </motion.div>
 
         {/* Stats Grid Pills */}

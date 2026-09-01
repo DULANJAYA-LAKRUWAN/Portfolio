@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { Badge } from '@/components/ui/Badge';
-import { BookOpen, Search, Clock, ArrowRight, Tag } from 'lucide-react';
+import { Search, Clock, ArrowRight } from 'lucide-react';
 
 export interface BlogPostItem {
   slug: string;

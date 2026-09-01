@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, Search, Menu, X, Sparkles, Github, Linkedin, ArrowUpRight } from 'lucide-react';
+import { Terminal, Search, Menu, X, Sparkles, Github, Linkedin } from 'lucide-react';
 import { PROFILE } from '@/lib/constants';
 
 interface NavbarProps {

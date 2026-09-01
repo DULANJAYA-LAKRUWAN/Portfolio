@@ -2,17 +2,15 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { SKILL_CATEGORIES, SkillItem } from '@/lib/constants';
+import { SKILL_CATEGORIES } from '@/lib/constants';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { Badge } from '@/components/ui/Badge';
-import { Cpu, Layers, Database, Shield, CheckCircle } from 'lucide-react';
+import { Cpu } from 'lucide-react';
 
 export const TechStackSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
 
   const categories = ['All', ...SKILL_CATEGORIES.map(c => c.category)];
-
-  const allSkills = SKILL_CATEGORIES.flatMap(cat => cat.skills);
 
   const displayedCategories = activeCategory === 'All'
     ? SKILL_CATEGORIES

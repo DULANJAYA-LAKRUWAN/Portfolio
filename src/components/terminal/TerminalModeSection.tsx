@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, X, Minimize2, Maximize2, Sparkles, Check, ArrowRight } from 'lucide-react';
+import { Terminal } from 'lucide-react';
 import { PROFILE, SKILL_CATEGORIES, FEATURED_PROJECTS, EXPERIENCES, EDUCATION } from '@/lib/constants';
 
 interface TerminalModeProps {
@@ -15,10 +14,7 @@ interface CommandOutput {
   output: React.ReactNode;
 }
 
-export const TerminalModeSection: React.FC<TerminalModeProps> = ({
-  isOpen = false,
-  onClose
-}) => {
+export const TerminalModeSection: React.FC<TerminalModeProps> = () => {
   const [inputCommand, setInputCommand] = useState('');
   const [history, setHistory] = useState<CommandOutput[]>([
     {
@@ -86,7 +82,7 @@ export const TerminalModeSection: React.FC<TerminalModeProps> = ({
           <div className="space-y-2 text-xs font-mono">
             {SKILL_CATEGORIES.map((cat) => (
               <div key={cat.category}>
-                <p className="text-yellow-400 font-bold">// {cat.category}</p>
+                <p className="text-yellow-400 font-bold">{"// "}{cat.category}</p>
                 <div className="pl-4 space-y-0.5 text-slate-300">
                   {cat.skills.map(s => (
                     <div key={s.name} className="flex justify-between max-w-md">

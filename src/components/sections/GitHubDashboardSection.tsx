@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { Badge } from '@/components/ui/Badge';
 import { Github, GitCommit, Star, GitFork, Activity, RefreshCw, Code } from 'lucide-react';
@@ -27,17 +26,20 @@ export const GitHubDashboardSection: React.FC = () => {
     { name: 'C / C++', percentage: 6, color: 'bg-purple-500' },
   ];
 
-  // Simulating 52 weeks of contribution graph matrix (364 days)
+  // Deterministic simulation of 52 weeks of contribution graph matrix (364 days) to prevent SSR hydration mismatch
   const generateContributionMatrix = () => {
-    const matrix = [];
+    const matrix: number[] = [];
     for (let i = 0; i < 52 * 7; i++) {
-      const level = Math.random() > 0.4 ? Math.floor(Math.random() * 4) + 1 : 0;
+      // Deterministic pseudo-random generator
+      const val = Math.sin(i * 883 + 17) * 10000;
+      const pseudoRand = val - Math.floor(val);
+      const level = pseudoRand > 0.38 ? Math.floor(pseudoRand * 4) + 1 : 0;
       matrix.push(level);
     }
     return matrix;
   };
 
-  const contributionMatrix = generateContributionMatrix();
+  const contributionMatrix = React.useMemo(() => generateContributionMatrix(), []);
 
   const getLevelColor = (level: number) => {
     switch (level) {

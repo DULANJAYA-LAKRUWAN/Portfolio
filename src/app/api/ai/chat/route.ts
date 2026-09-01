@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { FEATURED_PROJECTS, SKILL_CATEGORIES, PROFILE } from '@/lib/constants';
+import { FEATURED_PROJECTS, PROFILE } from '@/lib/constants';
 
 export async function POST(request: Request) {
   try {
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ reply });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'AI RAG engine processing failed' }, { status: 500 });
   }
 }

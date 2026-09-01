@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FEATURED_PROJECTS, ProjectItem } from '@/lib/constants';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { Badge } from '@/components/ui/Badge';
-import { Github, ExternalLink, Cpu, Layers, Activity, X, ArrowUpRight, Check } from 'lucide-react';
+import { Github, ExternalLink, Cpu, Layers, X, ArrowUpRight } from 'lucide-react';
 
 export const FeaturedProjectsSection: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);

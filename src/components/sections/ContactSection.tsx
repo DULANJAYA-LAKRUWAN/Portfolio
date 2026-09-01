@@ -32,7 +32,7 @@ export const ContactSection: React.FC = () => {
         // Fallback simulation for local dev
         setSubmitted(true);
       }
-    } catch (err) {
+    } catch {
       setSubmitted(true);
     } finally {
       setIsSubmitting(false);
@@ -74,7 +74,7 @@ export const ContactSection: React.FC = () => {
               </div>
             </div>
 
-            <h4 className="text-sm font-mono text-slate-300 font-semibold mb-4 uppercase tracking-wider">// Direct Channels</h4>
+            <h4 className="text-sm font-mono text-slate-300 font-semibold mb-4 uppercase tracking-wider">{"// Direct Channels"}</h4>
 
             <div className="space-y-6 text-sm">
               <div className="flex items-start gap-4">

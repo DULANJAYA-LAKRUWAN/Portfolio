@@ -1,10 +1,9 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { Badge } from '@/components/ui/Badge';
-import { Compass, Target, Rocket, Award, Code2, Zap } from 'lucide-react';
+import { Compass, Target, Zap } from 'lucide-react';
 import { PROFILE } from '@/lib/constants';
 
 export const AboutSection: React.FC = () => {
@@ -28,75 +27,75 @@ export const AboutSection: React.FC = () => {
 
   return (
     <section id="about" className="relative z-10 py-20">
-      {/* Section Header */}
+      {/* Section Title */}
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <Badge variant="accent" className="mb-3">
-          About & Manifesto
+        <Badge variant="primary" className="mb-3">
+          Manifesto & Identity
         </Badge>
         <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-4">
-          Architecting Software with <span className="text-gradient-primary">Craftsmanship & Rigor</span>
+          Architecting Resilient Systems & <span className="text-gradient-primary">AI Experiences</span>
         </h2>
-        <p className="text-slate-400 text-base leading-relaxed">
-          I am a Senior Staff Software Engineer and System Architect focused on building resilient cloud platforms and AI-driven products.
+        <p className="text-slate-400 text-base">
+          A blend of enterprise-grade distributed systems engineering, intuitive UX craftsmanship, and cutting-edge generative AI capabilities.
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column: Portrait Image & Quick Profile Card */}
         <div className="lg:col-span-5 space-y-6">
-          <GlassCard glow className="p-6 overflow-hidden">
-            {/* Image Frame */}
-            <div className="relative rounded-2xl overflow-hidden aspect-square border border-white/10 group mb-6 shadow-2xl">
+          <GlassCard glow className="p-6 relative overflow-hidden group">
+            <div className="relative w-full h-80 rounded-2xl overflow-hidden mb-6 border border-slate-700/80">
               <img
                 src={PROFILE.avatar}
                 alt={PROFILE.name}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-transparent to-transparent opacity-80" />
               
-              {/* Floating Status Tag */}
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                <div className="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700/80 backdrop-blur-md text-xs font-mono text-cyan-300 flex items-center gap-2 shadow-lg">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>Senior Staff Architect</span>
-                </div>
-                <div className="px-2.5 py-1.5 rounded-xl bg-blue-600/90 text-white font-mono text-[11px] font-bold shadow-lg">
-                  5+ Yrs
-                </div>
+              <div className="absolute bottom-4 left-4 right-4">
+                <span className="px-3 py-1 rounded-full bg-blue-600/90 backdrop-blur-md text-[11px] font-mono text-white">
+                  Available for Senior/Lead Contracts
+                </span>
               </div>
             </div>
 
-            {/* Quick Bio Specs */}
-            <div className="space-y-3">
+            <div className="space-y-2">
               <h3 className="text-xl font-bold text-white">{PROFILE.name}</h3>
               <p className="text-xs text-cyan-400 font-mono">{PROFILE.title}</p>
               <p className="text-slate-300 text-xs leading-relaxed">{PROFILE.tagline}</p>
             </div>
 
-            {/* Location & Status Pill */}
-            <div className="mt-6 pt-5 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-slate-400">
-              <span>📍 {PROFILE.location}</span>
-              <span className="text-emerald-400 font-semibold">Available for Hire</span>
+            <div className="mt-6 pt-4 border-t border-slate-800 grid grid-cols-2 gap-4 text-xs font-mono text-slate-400">
+              <div>
+                <span>📍 {PROFILE.location}</span>
+              </div>
+              <div className="text-right">
+                <span className="text-emerald-400">● Remote Ready</span>
+              </div>
             </div>
           </GlassCard>
         </div>
 
-        {/* Right Column: Story & Principles */}
+        {/* Right Column: Narrative Manifesto & Philosophy */}
         <div className="lg:col-span-7 space-y-6">
-          <GlassCard glow className="p-8">
+          <GlassCard className="p-8">
             <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Code2 className="w-5 h-5 text-blue-400" />
-              <span>Engineering Journey & Mission</span>
+              <span>The Engineering Philosophy</span>
             </h3>
+
             <div className="space-y-4 text-slate-300 text-sm leading-relaxed">
               <p>
-                My passion lies at the intersection of high-throughput backend microservices and hyper-polished, responsive user interfaces. Over the past 5+ years, I have architected platforms handling millions of transactions, built custom developer systems, and pioneered AI vector engines and modern SaaS platforms like <span className="text-cyan-400 font-mono">BizCRM Pro</span>, <span className="text-indigo-400 font-mono">Wedding Invitation Builder</span>, and <span className="text-blue-400 font-mono">FUTURELEAKS Studio</span>.
+                I believe software engineering is not merely about writing code; it is about building reliable, observable, and delightfully fast systems that solve tangible problems for human beings.
               </p>
               <p>
-                Whether designing transactional distribution systems with zero lock contention or building real-time telemetry dashboards that render 60 FPS smoothly, I adhere strictly to clean code principles, OWASP security, and sub-100ms latency standard.
+                Having architected and deployed high-throughput web applications, distributed microservices, and AI-driven platforms like <strong className="text-cyan-400">StarChance</strong> and <strong className="text-blue-400">CeyOS</strong>, I specialize in combining robust backend engineering with pixel-perfect, hyper-responsive user interfaces.
+              </p>
+              <p>
+                Whether crafting real-time WebSocket communication pipelines, optimizing PostgreSQL database execution plans, or designing agentic RAG retrieval architectures, I maintain relentless attention to detail, maintainability, and clean code principles.
               </p>
             </div>
-            
+
+            {/* Tech Badges Row */}
             <div className="mt-8 pt-6 border-t border-slate-800 flex flex-wrap gap-3">
               <Badge variant="outline">Full-Stack SaaS</Badge>
               <Badge variant="outline">Distributed Systems</Badge>
@@ -109,7 +108,7 @@ export const AboutSection: React.FC = () => {
           {/* Core Principles Grid */}
           <div className="space-y-4">
             <h3 className="text-sm font-mono font-semibold text-slate-200 tracking-wider uppercase">
-              // Core Engineering Principles
+              {"// Core Engineering Principles"}
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {principles.map((p, idx) => {

@@ -1,14 +1,16 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { Badge } from '@/components/ui/Badge';
-import { LayoutDashboard, FolderGit2, BookOpen, MessageSquare, Cpu, ShieldCheck, Users, Activity, BarChart2, Plus, Trash2, Edit } from 'lucide-react';
-import { FEATURED_PROJECTS, PROFILE } from '@/lib/constants';
-import { SAMPLE_BLOGS } from '@/components/sections/BlogSection';
+import { LayoutDashboard, FolderGit2, BookOpen, MessageSquare, Cpu, Plus, Trash2, Edit } from 'lucide-react';
+import { FEATURED_PROJECTS } from '@/lib/constants';
+
+type TabType = 'overview' | 'projects' | 'blogs' | 'messages' | 'rag';
 
 export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState<'overview' | 'projects' | 'blogs' | 'messages' | 'rag'>('overview');
+  const [activeTab, setActiveTab] = useState<TabType>('overview');
 
   return (
     <div className="min-h-screen bg-[#050816] text-white p-6 font-sans">
@@ -28,28 +30,28 @@ export default function AdminDashboard() {
             </div>
           </div>
 
-          <a
+          <Link
             href="/"
-            className="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs font-mono hover:text-white"
+            className="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs font-mono hover:text-white transition-colors"
           >
             ← Exit to Live Site
-          </a>
+          </Link>
         </div>
 
         {/* Tab Controls */}
         <div className="flex flex-wrap gap-2 border-b border-slate-800/80 pb-3">
           {[
-            { id: 'overview', label: 'System Overview', icon: LayoutDashboard },
-            { id: 'projects', label: 'Manage Projects', icon: FolderGit2 },
-            { id: 'blogs', label: 'Manage Blogs', icon: BookOpen },
-            { id: 'messages', label: 'Visitor Messages', icon: MessageSquare },
-            { id: 'rag', label: 'AI RAG Knowledge', icon: Cpu },
+            { id: 'overview' as const, label: 'System Overview', icon: LayoutDashboard },
+            { id: 'projects' as const, label: 'Manage Projects', icon: FolderGit2 },
+            { id: 'blogs' as const, label: 'Manage Blogs', icon: BookOpen },
+            { id: 'messages' as const, label: 'Visitor Messages', icon: MessageSquare },
+            { id: 'rag' as const, label: 'AI RAG Knowledge', icon: Cpu },
           ].map((tab) => {
             const Icon = tab.icon;
             return (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
+                onClick={() => setActiveTab(tab.id)}
                 className={`px-4 py-2 rounded-xl text-xs font-mono flex items-center gap-2 transition-all ${
                   activeTab === tab.id
                     ? 'bg-blue-600 text-white font-bold'

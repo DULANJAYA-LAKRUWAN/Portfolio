@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { Badge } from '@/components/ui/Badge';
-import { Sparkles, Send, Bot, User, Cpu, RefreshCw, CornerDownLeft, ShieldCheck } from 'lucide-react';
-import { PROFILE, FEATURED_PROJECTS, SKILL_CATEGORIES } from '@/lib/constants';
+import { Sparkles, Send, Bot, User, RefreshCw } from 'lucide-react';
+import { FEATURED_PROJECTS } from '@/lib/constants';
 
 interface ChatMessage {
   id: string;
@@ -25,6 +25,7 @@ export const AIPlaygroundSection: React.FC = () => {
   ]);
   const [inputPrompt, setInputPrompt] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
+  const msgCounter = useRef(2);
 
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
@@ -45,11 +46,15 @@ export const AIPlaygroundSection: React.FC = () => {
     const query = textToSend || inputPrompt;
     if (!query.trim() || isGenerating) return;
 
+    const nextId = String(msgCounter.current++);
+    const now = new Date();
+    const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+
     const userMsg: ChatMessage = {
-      id: Date.now().toString(),
+      id: nextId,
       sender: 'user',
       text: query,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      timestamp: timeStr
     };
 
     setMessages((prev) => [...prev, userMsg]);

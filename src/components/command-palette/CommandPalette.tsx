@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Terminal, Sparkles, FolderGit2, Briefcase, Mail, FileText, X, ArrowRight } from 'lucide-react';
+import { Search, Terminal, Sparkles, FolderGit2, Mail, FileText, X, ArrowRight } from 'lucide-react';
 import { PROFILE, FEATURED_PROJECTS } from '@/lib/constants';
 
 interface CommandPaletteProps {
@@ -22,8 +22,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
-        if (isOpen) onClose();
-        else onClose(); // parent handles toggling
+        onClose();
       }
       if (e.key === 'Escape' && isOpen) {
         onClose();
@@ -35,16 +34,21 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
 
   if (!isOpen) return null;
 
+  const navigateToSection = (id: string) => {
+    onClose();
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const actions = [
     {
       id: 'ai',
       title: 'Ask AI Assistant',
       category: 'Features',
       icon: Sparkles,
-      action: () => {
-        onClose();
-        window.location.hash = 'ai-playground';
-      }
+      action: () => navigateToSection('ai-playground')
     },
     {
       id: 'terminal',
@@ -71,20 +75,14 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       title: 'Send direct message or email',
       category: 'Actions',
       icon: Mail,
-      action: () => {
-        onClose();
-        window.location.hash = 'contact';
-      }
+      action: () => navigateToSection('contact')
     },
     ...FEATURED_PROJECTS.map(p => ({
       id: p.slug,
       title: `View Project: ${p.title}`,
       category: 'Projects',
       icon: FolderGit2,
-      action: () => {
-        onClose();
-        window.location.hash = 'projects';
-      }
+      action: () => navigateToSection('projects')
     }))
   ];
 

@@ -4,7 +4,7 @@ import React from 'react';
 import { EDUCATION, CERTIFICATIONS } from '@/lib/constants';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { Badge } from '@/components/ui/Badge';
-import { GraduationCap, Award, BookOpen, ExternalLink, ShieldCheck, CheckCircle } from 'lucide-react';
+import { Award, BookOpen, ExternalLink, CheckCircle } from 'lucide-react';
 
 export const EducationCertsSection: React.FC = () => {
   return (
